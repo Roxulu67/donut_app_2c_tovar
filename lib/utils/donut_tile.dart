@@ -5,13 +5,15 @@ class DonutTile extends StatelessWidget {
  final String donutPrice;
  final dynamic donutColor;  //dynamic porque será de tipo Color y también usará []
  final String imageName;
+ final String donutStore;
 
  const DonutTile({
    super.key,
    required this.donutFlavor,
    required this.donutPrice,
    required this.donutColor,
-   required this.imageName,
+   required this.imageName, 
+   required this.donutStore,
  });
 
  @override
@@ -42,7 +44,7 @@ class DonutTile extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold, 
                         fontSize: 18, 
-                        color: donutColor[800])),
+                        color: donutColor[80])),
                   )
                 ],
               ),
@@ -53,15 +55,38 @@ class DonutTile extends StatelessWidget {
                   vertical: 12
                 ),
                 child: Image.asset(imageName),
-              )
+              ),
 
               //Donut Flavor
-
-              //Love icon + add buton
-
-            ],
-          ),
-            ),
+              Text(donutFlavor,
+                  style: 
+                      const TextStyle(fontWeight:FontWeight.bold, fontSize: 24)),
+              //Espacio entre textos
+              const SizedBox(
+                height: 4,
+              ),
+              //Donut Store
+              Text(donutStore,
+                style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 16,
+                    color: Colors.grey[600])),
+              //Espacio entre textos
+              const SizedBox(height: 4),
+              //Love icon + add button
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: 
+                  MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.favorite_border),
+                    Icon(Icons.add)
+                  ],
+                ),
+              )
+      ],),
+    ),
    );
  }
 }
