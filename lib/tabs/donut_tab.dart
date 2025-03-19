@@ -4,13 +4,17 @@ import 'package:flutter/material.dart';
 class DonutTab extends StatelessWidget {
 
   //Lista de donas
-  final List donutsOnSale = [
-    // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
-   ["Ice Cream", "Krispy Kreme", "36", Colors.blue, "lib/images/icecream_donut.png"],
-   ["Strawberry", "Dunkin donuts", "45", Colors.red, "lib/images/strawberry_donut.png"],
-   ["Grape Ape", "Aurrerá", "84", Colors.purple, "lib/images/grape_donut.png"],
-   ["Choco", "Costco", "95", Colors.brown, "lib/images/chocolate_donut.png"],
-
+   final List donutsOnSale = [
+     // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
+    ["Nutella","Krispy Cream", "65", Colors.brown, "lib/images/chocolate_donut.png"],
+    ["Strawberry", "Dunkin Donuts", "45", Colors.red, "lib/images/strawberry_donut.png"],
+    ["Grape Ape", "Krispy Cream", "84", Colors.purple, "lib/images/grape_donut.png"],
+    ["Hershey's", "Donkey Donut", "95", Colors.brown, "lib/images/chocolate_donut.png"],
+    ["Banana", "Donkey Donut", "60", Colors.yellow, "lib/images/chocolate_donut.png"],
+    ["Ice Cream", "Krispy Cream", "78", Colors.pink, "lib/images/strawberry_donut.png"],
+    ["Carlos V", "Krispy Cream", "99", Colors.brown, "lib/images/chocolate_donut.png"],
+    ["Peanut Butter","Krispy Cream", "81", Colors.orange, "lib/images/icecream_donut.png"],
+ 
   ];
   DonutTab ({super.key});
 
@@ -35,8 +39,6 @@ class DonutTab extends StatelessWidget {
           donutColor: donutsOnSale[index][3],
           imageName: donutsOnSale[index][4],
         );
-
-
       },
     );
   }
