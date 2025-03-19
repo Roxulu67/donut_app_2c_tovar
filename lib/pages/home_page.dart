@@ -77,12 +77,66 @@ class _HomePageState extends State<HomePage> {
                 PizzaTab(),
 
                  ],)
+                
               
-            )
-            //Carrito
-          ],
-        )),
-    );
-  }
+            ),
+             //Carrito
+             Container(
+               color: Colors.white,
+               padding: const EdgeInsets.all(16),
+               child: Row(
+                //Esto alinea los elementos a los extremos
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children:[
+                   Padding(
+                     padding: const EdgeInsets.only(left: 28),
+                     child: Column(
+                       //Alinear horizontalmente una columna
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         const Text('2 Items | \$45',
+                         style: TextStyle(
+                           fontSize: 18, fontWeight: FontWeight.bold),
+                         ),
+                         const Text(
+                           'Delivery Charges Included',
+                           style: TextStyle(
+                             fontSize: 12),
+                         ),
+                       ],
+                     ),
+                   ),
+                   ElevatedButton(
+                           onPressed: () {}, 
+                           style: ElevatedButton.styleFrom(
+                               backgroundColor: Colors.pink,
+                               padding: EdgeInsets.symmetric(
+                                 horizontal: 24, vertical: 12)),
+                           child: const Row(
+                             children: [
+                              Icon(
+                                Icons.shopping_cart,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width:10,
+                              ),
+                              Text(
+                                 'View Cart',
+                                 style: TextStyle(color: Colors.white)                          ),
+                             ],
+                           )),
+                 ],
+               ),
+ 
+             )
+               
+           ],
+         )),
+     );
+   }
 }
+          
+          
+           
 
