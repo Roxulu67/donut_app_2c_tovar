@@ -1,96 +1,98 @@
 import 'package:flutter/material.dart';
 
+// Clase DonutTile que extiende StatelessWidget
 class DonutTile extends StatelessWidget {
-  final String donutFlavor;
-  final String donutPrice;
-  final dynamic donutColor;
-  final String imageName;
-  final String donutStore;
+  final String donutFlavor; // Sabor de la dona
+  final String donutStore; // Lugar de la dona
+  final String donutPrice; // Precio de la dona
+  final dynamic donutColor; // Color de la dona (dato dinámico)
+  final String imageName; // Nombre de la imagen de la dona
+  final Function onAdd; // Callback para agregar al carrito
 
+  // Constructor de la clase DonutTile
   const DonutTile({
     super.key,
-    required this.donutFlavor,
-    required this.donutPrice,
-    required this.donutColor,
-    required this.imageName,
+    required this.donutFlavor, // Sabor de la dona requerido
     required this.donutStore,
+    required this.donutPrice, // Precio de la dona requerido
+    this.donutColor, // Color de la dona opcional
+    required this.imageName,
+    required this.onAdd, // Recibe la función como parámetro
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+      padding: const EdgeInsets.all(12.0), // Espaciado alrededor del contenedor
       child: Container(
-        width: 220, // Tarjeta más ancha
-        height: 280, // Tarjeta más alta para mejor proporción
         decoration: BoxDecoration(
-          color: donutColor[50],
-          borderRadius: BorderRadius.circular(24),
+          color: donutColor[50], // Color de fondo del contenedor
+          borderRadius: BorderRadius.circular(24), // Bordes redondeados
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Price Tag
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: donutColor[100],
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    topRight: Radius.circular(24),
+          children: <Widget>[
+            // Etiqueta de precio
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end, // Alinea a la derecha
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: donutColor[100], // Color de fondo de la etiqueta
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(24),
+                      bottomLeft: Radius.circular(24),
+                    ),
                   ),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Text(
-                  '\$$donutPrice',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black,
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8, horizontal: 18), // Espaciado interno
+                  child: Text(
+                    '\$ $donutPrice', // Muestra el precio de la dona
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold, // Texto en negrita
+                      fontSize: 18, // Tamaño de fuente
+                      color: donutColor[800], // Color del texto
+                    ),
                   ),
-                ),
-              ),
+                )
+              ],
             ),
-
-            // Donut Image (Más grande)
+            // Imagen de la dona
             Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SizedBox(
-                height: 140, // Imagen más grande
-                child: Image.asset(imageName, fit: BoxFit.contain),
-              ),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+              child: Image.asset(imageName), // Carga la imagen de la dona
             ),
-
-            // Donut Flavor
+            // Texto del sabor de la dona
             Text(
               donutFlavor,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 22, // Texto más grande
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-            const SizedBox(height: 4),
-
-            // Donut Store
+            const SizedBox(height: 4), // Espaciado entre textos
+            // Nombre de la tienda
             Text(
               donutStore,
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 16, // Texto más grande
-                color: Colors.grey[600],
-              ),
+              style:
+                  const TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
             ),
-            const SizedBox(height: 8),
-
-            // Love icon + add button (alineado correctamente)
+            // Icono de favorito + icono de agregar
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+              padding: const EdgeInsets.all(12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.favorite_border, size: 28), // Íconos más grandes
-                  Icon(Icons.add, size: 28),
+                  Icon(
+                    Icons.favorite,
+                    color: Colors.red, // Cambiado a rojo
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      onAdd(); // Llama a la función para agregar al carrito
+                    },
+                    child: Icon(
+                      Icons.add, // Cambiado de "add" a "+"
+                      size: 20,
+                      color: Colors.blue, // Color opcional
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -100,5 +102,6 @@ class DonutTile extends StatelessWidget {
     );
   }
 }
+
 
 
